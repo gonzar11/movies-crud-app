@@ -9,18 +9,20 @@ const EditMovie = (props) => {
     release_year: ''
   };
   
-  // const [movie, setMovie] = useState(initialMovieState);
-  // const [people, setPeople] = useState([]);
-  const [message, setMessage] = useState('');
+  const [successMessage, setSucessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const updateMovie = (movie) => {
     MovieService.update(movie.id, movie)
       .then(response => {
         console.log(response.data);
-        setMessage("The movie was updated successfully!");
+        setSucessMessage('The movie was updated successfully!');
+        setErrorMessage('');
       })
       .catch(e => {
         console.log(e);
+        setErrorMessage(e.response.data.message);
+        setSucessMessage('');
       });
   };
 
@@ -30,6 +32,8 @@ const EditMovie = (props) => {
         editMode={true}
         handleSubmit={updateMovie}
         id={props.match.params.id}
+        successMessage={successMessage}
+        errorMessage={errorMessage}
       />
     </Fragment>
   );

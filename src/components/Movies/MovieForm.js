@@ -12,10 +12,9 @@ const MovieForm = (props) => {
     directors: [],
     producers: []
   };
-  const {editMode, id} = props;
+  const {editMode, id, successMessage, errorMessage} = props;
   const [movie, setMovie] = useState(initialMovieState);
   const [people, setPeople] = useState([]);
-  const [message, setMessage] = useState('');
 
   const getMovie = id => {
     MovieService.get(id)
@@ -82,6 +81,17 @@ const MovieForm = (props) => {
 
   return (
     <div className="wrapper">
+      {/* TODO: Refactor this alert messages in one component AlertMessage */}
+      {successMessage &&
+        <div className="alert alert-success mt-2" role="alert">
+          {successMessage}
+        </div>
+      }
+      {errorMessage &&
+        <div className="alert alert-danger mt-2" role="alert">
+          {errorMessage}
+        </div>
+      }
       <div className="header">
         <h1>{movie.title}</h1>
       </div>
@@ -174,6 +184,8 @@ const MovieForm = (props) => {
         </ul>
       </div>
       <button className="create" onClick={handleSubmit}>Update</button>
+      
+      
     </div>
   );
 }
