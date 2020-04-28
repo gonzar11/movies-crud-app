@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
+body {
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 920px;
+  margin-top: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.header--left {
+  display: flex;
+  align-items: center;
+}
+.header h1 {
+  margin: 0;
+  margin-right: 20px;
+}
+
+.create {
+  cursor: pointer;
+  border: 0 none;
+  padding: 8px 22px;
+  margin-right: 5px;
+  transition: background-color 0.225s ease;
+  border-radius: 4px;
+  background-color: #0042A5;
+  color: white;
+  font-size: 16px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+.list--item {
+  background: white;
+  padding: 12px 10px;
+}
+.list--item:nth-child(odd) {
+  background: #f1eeee;
+}
+.list span {
+  margin-right: 25px;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  border: 0 none;
+  font-size: 14px;
+  padding: 5px 20px;
+  margin-right: 5px;
+  transition: background-color 0.225s ease;
+  border-radius: 4px;
+}
+
+.edit {
+  background-color: #318aca;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.edit:hover {
+  background-color: #276ea1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.delete {
+  background-color: #E53D38;
+  color: white;
+}
+.delete:hover {
+  background-color: #cf201b;
+}
+
+.logout {
+  cursor: pointer;
+  border: 0 none;
+  font-size: 16px;
+  padding: 5px 20px;
+  margin-right: 5px;
+  transition: background-color 0.225s ease;
+  border-radius: 4px;
+  color: white;
+  background-color: #222222;
+}
+
+
+
+
+
+
+
+
+
+
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+.list--item {
+  background: white;
+  padding: 12px 10px;
+}
+.list--item:nth-child(odd) {
+  background: #f1eeee;
+}
+.list span {
+  margin-right: 25px;
+}
+.list--input {
+  padding: 6px 8px;
+  border-radius: 4px;
+  box-shadow: 0 none;
+  border: 1px solid rgba(0, 66, 165, 0.15);
+  box-shadow: 0px 5px 20px rgba(0, 66, 165, 0.08), 0px 1px 4px rgba(0, 66, 165, 0.15);
+  font-size: 14px;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  border: 0 none;
+  font-size: 14px;
+  padding: 5px 20px;
+  margin-right: 5px;
+  transition: background-color 0.225s ease;
+  border-radius: 4px;
+}
+
+.edit {
+  background-color: #318aca;
+  color: white;
+}
+.edit:hover {
+  background-color: #276ea1;
+}
+
+.delete {
+  background-color: #E53D38;
+  color: white;
+}
+.delete:hover {
+  background-color: #cf201b;
+}
+
+.logout {
+  cursor: pointer;
+  border: 0 none;
+  font-size: 16px;
+  padding: 5px 20px;
+  margin-right: 5px;
+  transition: background-color 0.225s ease;
+  border-radius: 4px;
+  color: white;
+  background-color: #222222;
+}
+
+.list--block {
+  border: 1px solid rgba(0, 66, 165, 0.15);
+  padding: 10px;
+}
+.list--block h2 {
+  margin-right: 20px;
+}
+.list--block_header {
+  display: flex;
+  align-items: center;
 }
