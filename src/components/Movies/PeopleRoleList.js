@@ -1,5 +1,5 @@
-import React from "react";
-import AddPersonDropdown from "./AddPersonDropdown";
+import React from 'react';
+import AddItemDropdown from '../AddItemDropdown';
 
 const PeopleRoleList = props => {
   const {title, people, personRole, movie} = props;
@@ -15,13 +15,19 @@ const PeopleRoleList = props => {
     props.onRemoveClick(personRole, personId)
   }
 
+  const formatPeople = people => {
+    return people.map(person => {
+      return {id: person.id, name: `${person.first_name} ${person.last_name}`
+    }});
+  }
+
   return (
     <div className="list list--block">
       <div className="list--block_header">
         <h2 className="list--tile">{title}</h2>
-        <AddPersonDropdown 
-          items={people}
-          personRole={personRole}
+        <AddItemDropdown
+          items={formatPeople(people)}
+          itemType={personRole}
           onClick={handleAddClick}
         />
       </div>

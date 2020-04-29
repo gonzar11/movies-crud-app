@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from "react";
 
-const AddPersonDropDown = (props) => {
+const AddItemDropdown = (props) => {
   const [value, setValue] = useState(-1);
   const items = props.items;
-  const personRole = props.personRole;
+  const itemType = props.itemType;
 
   return (
     <Fragment>
@@ -11,16 +11,16 @@ const AddPersonDropDown = (props) => {
         value={value}
         onChange={e => setValue(e.currentTarget.value)}
       >
-        <option value={-1}>Select a person</option>
+        <option value={-1}>Select</option>
         {items && items.map(item => (
           <option key={item.id} value={item.id}>
-            {item.first_name} {item.last_name}
+            {item.name}
           </option>
         ))}
     </select>
     <button 
       className="create"
-      onClick={() => props.onClick(personRole, value)}
+      onClick={() => props.onClick(itemType, value)}
     >
       Add
     </button>
@@ -28,4 +28,4 @@ const AddPersonDropDown = (props) => {
   );
 }
 
-export default AddPersonDropDown;
+export default AddItemDropdown;
