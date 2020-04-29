@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MovieService from "../../services/MovieService";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const MoviesList = () => {
+  const { url } = useRouteMatch();
   const [movies, setMovies] = useState([]);
-  const [currentMovie, setCurrentMovie] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
     getMovies();
@@ -37,7 +36,7 @@ const MoviesList = () => {
       <div className="header">
         <div className="header--left">
           <h1>Movies</h1>
-          <Link to={"/movies/add"} >
+          <Link to={`${url}/add`} >
             <button className="create">Create</button>
           </Link>
         </div>
@@ -46,7 +45,7 @@ const MoviesList = () => {
         {movies && movies.map((movie, index) =>(
           <li className="list--item" key={movie.id}>
             <span>{movie.title} - release year: {movie.release_year}</span>
-            <Link to={`movies/${movie.id}/edit`}>
+            <Link to={`${url}/${movie.id}/edit`}>
               <button className="edit">Edit</button>
             </Link>
             <button className="delete" onClick={() => deleteMovie(movie.id)}>Delete</button>
