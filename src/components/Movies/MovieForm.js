@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovieService from "../../services/MovieService";
 import PersonService from "../../services/PersonService";
-import AddPersonDropdown from "./AddPersonDropdown";
+import PeopleRoleList from "./PeopleRoleList";
 
 const MovieForm = (props) => {
   const initialMovieState = {
@@ -49,21 +49,19 @@ const MovieForm = (props) => {
     setMovie({...movie, [name]: value });
   };
 
-  const removePerson = (personRol, personId) => {
-    const items = movie[personRol].filter(person => {return person.id !== personId}); 
-    setMovie({...movie, [personRol]: items });
+  const removePerson = (personRole, personId) => {
+    const items = movie[personRole].filter(person => {return person.id !== personId});
+    setMovie({...movie, [personRole]: items });
   };
 
-  const addPerson = (itemType, itemId) => {
-    console.log(itemType);
-    console.log(itemId);
-    if (itemId === -1)
+  const addPerson = (personRole, personId) => {
+    if (personId === -1)
       return;
 
-    const item = movie[itemType].find(item => item.id == itemId);
+    const item = movie[personRole].find(person => person.id == personId);
     if (!item) {
-      const person = people.find(person => person.id == itemId );
-      setMovie({...movie, [itemType]: [...movie[itemType], person] });
+      const person = people.find(person => person.id == personId );
+      setMovie({...movie, [personRole]: [...movie[personRole], person] });
     }    
   }
 
@@ -117,75 +115,31 @@ const MovieForm = (props) => {
           </li>
         </ul>
       </div>
-      <div className="list list--block">
-        <div className="list--block_header">
-          <h2 className="list--tile">Actors</h2>
-          <AddPersonDropdown 
-            items={people}
-            personRole="casting"
-            onClick={addPerson}
-          />
-        </div>
-        <ul>
-          {movie.casting && movie.casting.map((actor) =>(
-            <li key={actor.id} className="list--item">
-              <span>{actor.first_name} {actor.last_name}</span>
-              <button 
-                className="delete"
-                onClick={() => removePerson('casting', actor.id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="list list--block">
-        <div className="list--block_header">
-          <h2 className="list--tile">Directors</h2>
-          <AddPersonDropdown 
-            items={people}
-            personRole="directors"
-            onClick={addPerson}
-          />
-        </div>
-        <ul>
-          {movie.directors && movie.directors.map((director) =>(
-            <li key={director.id} className="list--item">
-              <span>{director.first_name} {director.last_name}</span>
-              <button 
-                className="delete"
-                onClick={() => removePerson('directors', director.id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="list list--block">
-        <div className="list--block_header">
-          <h2 className="list--tile">Producers</h2>
-          <AddPersonDropdown 
-            items={people}
-            personRole="producers"
-            onClick={addPerson}
-          />
-        </div>
-        <ul>
-          {movie.producers && movie.producers.map((producer) =>(
-            <li key={producer.id} className="list--item">
-              <span>{producer.first_name} {producer.last_name}</span>
-              <button 
-                className="delete" 
-                onClick={() => removePerson('producers', producer.id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <PeopleRoleList
+        movie={movie}
+        people={people}
+        title="Casting"
+        personRole="casting"
+        onAddClick={addPerson}
+        onRemoveClick={removePerson}
+      />
+      <PeopleRoleList
+        movie={movie}
+        people={people}
+        title="Directors"
+        personRole="directors"
+        onAddClick={addPerson}
+        onRemoveClick={removePerson}
+      />
+      <PeopleRoleList
+        movie={movie}
+        people={people}
+        title="Producers"
+        personRole="producers"
+        onAddClick={addPerson}
+        onRemoveClick={removePerson}
+      />
       <button className="create" onClick={handleSubmit}>Update</button>
-      
-      
     </div>
   );
 }
