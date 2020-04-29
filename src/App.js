@@ -1,10 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import AddMovie from "./components/Movies/AddMovie";
-import EditMovie from "./components/Movies/EditMovie";
-import MoviesList from "./components/Movies/MoviesList";
+import MoviesList from './components/Movies/MoviesList';
+import AddMovie from './components/Movies/AddMovie';
+import EditMovie from './components/Movies/EditMovie';
+import PeopleList from './components/People/PeopleList';
+import AddPerson from './components/People/AddPerson';
+import EditPerson from './components/People/EditPerson';
+
 
 function App() {
   return (
@@ -21,8 +25,8 @@ function App() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/movies/add"} className="nav-link">
-                Add Movie
+              <Link to={"/people"} className="nav-link">
+                People
               </Link>
             </li>
           </div>
@@ -32,6 +36,9 @@ function App() {
             <Route exact path={["/", "/movies"]} component={MoviesList} />
             <Route exact path="/movies/add" component={AddMovie} />
             <Route path="/movies/:id/edit" component={EditMovie} />
+            <Route exact path={"/people"} component={PeopleList} />
+            <Route exact path="/people/add" component={AddPerson} />
+            <Route path="/people/:id/edit" component={EditPerson} />
           </Switch>
         </div>
       </div>
