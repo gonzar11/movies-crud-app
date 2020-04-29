@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import MovieService from "../../services/MovieService";
-import PersonService from "../../services/PersonService";
-import PeopleRoleList from "./PeopleRoleList";
+import React, { useState, useEffect } from 'react';
+import MovieService from '../../services/MovieService';
+import PersonService from '../../services/PersonService';
+import ItemRoleList from '../ItemRoleList';
 
 const MovieForm = (props) => {
   const initialMovieState = {
@@ -15,6 +15,7 @@ const MovieForm = (props) => {
   const {editMode, id, successMessage, errorMessage} = props;
   const [movie, setMovie] = useState(initialMovieState);
   const [people, setPeople] = useState([]);
+  const [formattedPeople, setFormattedPeople] = useState([]);
 
   const getMovie = id => {
     MovieService.get(id)
@@ -30,6 +31,7 @@ const MovieForm = (props) => {
     PersonService.getAll()
       .then(response => {
         setPeople(response.data);
+        setFormattedPeople(formatPeople(response.data));
         console.log(response.data)
       })
       .catch(e => {
@@ -55,14 +57,17 @@ const MovieForm = (props) => {
   };
 
   const addPerson = (personRole, personId) => {
-    if (personId === -1)
-      return;
-
     const item = movie[personRole].find(person => person.id == personId);
     if (!item) {
       const person = people.find(person => person.id == personId );
       setMovie({...movie, [personRole]: [...movie[personRole], person] });
     }    
+  };
+
+  const formatPeople = people => {
+    return people.map(person => {
+      return {id: person.id, name: `${person.first_name} ${person.last_name}`
+    }});
   }
 
   const handleSubmit = () => {
@@ -115,27 +120,27 @@ const MovieForm = (props) => {
           </li>
         </ul>
       </div>
-      <PeopleRoleList
-        movie={movie}
-        people={people}
+      <ItemRoleList
+        addedItems={formatPeople(movie.casting)}
+        items={formattedPeople}
         title="Casting"
-        personRole="casting"
+        itemType="casting"
         onAddClick={addPerson}
         onRemoveClick={removePerson}
       />
-      <PeopleRoleList
-        movie={movie}
-        people={people}
+      <ItemRoleList
+        addedItems={formatPeople(movie.directors)}
+        items={formattedPeople}
         title="Directors"
-        personRole="directors"
+        itemType="directors"
         onAddClick={addPerson}
         onRemoveClick={removePerson}
       />
-      <PeopleRoleList
-        movie={movie}
-        people={people}
+      <ItemRoleList
+        addedItems={formatPeople(movie.producers)}
+        items={formattedPeople}
         title="Producers"
-        personRole="producers"
+        itemType="producers"
         onAddClick={addPerson}
         onRemoveClick={removePerson}
       />
