@@ -1,14 +1,8 @@
-import React, { useState, Fragment } from "react";
-import MovieService from "../../services/MovieService";
-import MovieForm from "./MovieForm";
+import React, { useState, Fragment } from 'react';
+import MovieService from '../../services/MovieService';
+import MovieForm from './MovieForm';
 
 const EditMovie = (props) => {
-  const initialMovieState = {
-    id: null,
-    title: '',
-    release_year: ''
-  };
-  
   const [successMessage, setSucessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
