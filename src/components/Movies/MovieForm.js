@@ -17,6 +17,12 @@ const MovieForm = (props) => {
   const [people, setPeople] = useState([]);
   const [formattedPeople, setFormattedPeople] = useState([]);
 
+  const personRoles = [
+    {name: 'casting', title: 'Casting'},
+    {name: 'directors', title: 'Directors'},
+    {name: 'producers', title: 'Producers' }
+  ]
+
   const getMovie = id => {
     MovieService.get(id)
       .then(response => {
@@ -120,30 +126,18 @@ const MovieForm = (props) => {
           </li>
         </ul>
       </div>
-      <ItemRoleList
-        addedItems={formatPeople(movie.casting)}
-        items={formattedPeople}
-        title="Casting"
-        itemType="casting"
-        onAddClick={addPerson}
-        onRemoveClick={removePerson}
-      />
-      <ItemRoleList
-        addedItems={formatPeople(movie.directors)}
-        items={formattedPeople}
-        title="Directors"
-        itemType="directors"
-        onAddClick={addPerson}
-        onRemoveClick={removePerson}
-      />
-      <ItemRoleList
-        addedItems={formatPeople(movie.producers)}
-        items={formattedPeople}
-        title="Producers"
-        itemType="producers"
-        onAddClick={addPerson}
-        onRemoveClick={removePerson}
-      />
+      {
+        personRoles.map(role => (
+          <ItemRoleList
+            addedItems={formatPeople(movie[role.name])}
+            items={formattedPeople}
+            title={role.title}
+            itemType={role.name}
+            onAddClick={addPerson}
+            onRemoveClick={removePerson}
+          />
+        ))
+      }
       <button className="create" onClick={handleSubmit}>Update</button>
     </div>
   );

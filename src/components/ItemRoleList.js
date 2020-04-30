@@ -2,8 +2,7 @@ import React from 'react';
 import AddItemDropdown from './AddItemDropdown';
 
 const ItemRoleList = props => {
-  const { title } = props;
-  const { itemType, items, addedItems } = props
+  const { title, itemType, items, addedItems } = props
 
   const handleAddClick = (itemType, itemId) => {
     if (itemId === -1) {
