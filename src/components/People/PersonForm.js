@@ -108,7 +108,7 @@ const PersonForm = (props) => {
       <div className="list list--block">
         <h2 className="list--tile">Basic info</h2>
         <ul>
-          <li className="list--item"><span>First Name</span>
+          <li className="list--item_input"><span>First Name</span>
             <input 
               className="list--input"
               type="text"
@@ -117,7 +117,7 @@ const PersonForm = (props) => {
               onChange={handleInputChange}
             />
           </li>
-          <li className="list--item"><span>Last Name</span>
+          <li className="list--item_input"><span>Last Name</span>
             <input 
               className="list--input"
               type="text"
@@ -126,7 +126,7 @@ const PersonForm = (props) => {
               onChange={handleInputChange}
             />
           </li>
-          <li className="list--item"><span>Aliases</span>
+          <li className="list--item_input"><span>Aliases</span>
             <input 
               className="list--input"
               type="text"

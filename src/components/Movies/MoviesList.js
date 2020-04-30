@@ -45,10 +45,12 @@ const MoviesList = () => {
         {movies && movies.map((movie, index) =>(
           <li className="list--item" key={movie.id}>
             <span>{movie.title} - release year: {movie.release_year}</span>
-            <Link to={`${url}/${movie.id}/edit`}>
-              <button className="edit">Edit</button>
-            </Link>
-            <button className="delete" onClick={() => deleteMovie(movie.id)}>Delete</button>
+            <div className=".list--item_buttons">
+              <Link to={`${url}/${movie.id}/edit`}>
+                <button className="edit">Edit</button>
+              </Link>
+              <button className="delete" onClick={() => deleteMovie(movie.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>

@@ -16,10 +16,12 @@ body {
   justify-content: space-between;
   margin-bottom: 10px;
 }
+
 .header--left {
   display: flex;
   align-items: center;
 }
+
 .header h1 {
   margin: 0;
   margin-right: 20px;
@@ -30,26 +32,12 @@ body {
   border: 0 none;
   padding: 8px 22px;
   margin-right: 5px;
+  margin-left: 10px;
   transition: background-color 0.225s ease;
   border-radius: 4px;
   background-color: #0042A5;
   color: white;
   font-size: 16px;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-}
-.list--item {
-  background: white;
-  padding: 12px 10px;
-}
-.list--item:nth-child(odd) {
-  background: #f1eeee;
-}
-.list span {
-  margin-right: 25px;
 }
 
 .edit,
@@ -67,6 +55,7 @@ body {
   background-color: #318aca;
   color: white;
 }
+
 .edit:hover {
   background-color: #276ea1;
 }
@@ -75,41 +64,36 @@ body {
   background-color: #E53D38;
   color: white;
 }
+
 .delete:hover {
   background-color: #cf201b;
 }
-
-.logout {
-  cursor: pointer;
-  border: 0 none;
-  font-size: 16px;
-  padding: 5px 20px;
-  margin-right: 5px;
-  transition: background-color 0.225s ease;
-  border-radius: 4px;
-  color: white;
-  background-color: #222222;
-}
-
-
-
-
-
-
-
-
-
-
 
 .list {
   list-style: none;
   padding: 0;
 }
+
 .list--item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: white;
   padding: 12px 10px;
 }
-.list--item:nth-child(odd) {
+
+.list--item_input {
+  display: block;
+  background: white;
+  padding: 12px 10px;
+}
+
+.list--item_buttons {
+  min-width: 162px;
+}
+
+.list--item:nth-child(odd),
+.list--item_input:nth-child(odd) {
   background: #f1eeee;
 }
 .list span {
@@ -149,18 +133,6 @@ body {
 }
 .delete:hover {
   background-color: #cf201b;
-}
-
-.logout {
-  cursor: pointer;
-  border: 0 none;
-  font-size: 16px;
-  padding: 5px 20px;
-  margin-right: 5px;
-  transition: background-color 0.225s ease;
-  border-radius: 4px;
-  color: white;
-  background-color: #222222;
 }
 
 .list--block {

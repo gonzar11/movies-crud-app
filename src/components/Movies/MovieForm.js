@@ -101,7 +101,7 @@ const MovieForm = (props) => {
       <div className="list list--block">
         <h2 className="list--tile">Basic info</h2>
         <ul>
-          <li className="list--item"><span>Title</span>
+          <li className="list--item_input"><span>Title</span>
             <input 
               className="list--input"
               type="text"
@@ -109,7 +109,7 @@ const MovieForm = (props) => {
               value={movie.title}
               onChange={handleInputChange}/>
           </li>
-          <li className="list--item"><span>Year</span>
+          <li className="list--item_input"><span>Year</span>
             <input
               className="list--input"
               type="text"

@@ -45,10 +45,12 @@ const PeopleList = () => {
         {people && people.map((person, index) => (
           <li className="list--item" key={person.id}>
             <span>{person.first_name} {person.last_name}</span>
-            <Link to={`${url}/${person.id}/edit`}>
-              <button className="edit">Edit</button>
-            </Link>
-            <button className="delete" onClick={() => deletePerson(person.id)}>Delete</button>
+            <div className=".list--item_buttons">
+              <Link to={`${url}/${person.id}/edit`}>
+                <button className="edit">Edit</button>
+              </Link>
+              <button className="delete" onClick={() => deletePerson(person.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
