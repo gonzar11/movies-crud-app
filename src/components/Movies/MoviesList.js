@@ -44,7 +44,7 @@ const MoviesList = () => {
       <ul className="list">
         {movies && movies.map((movie, index) =>(
           <li className="list--item" key={movie.id}>
-            <span>{movie.title} - release year: {movie.release_year}</span>
+            <span>{movie.title} - release year: {movie.roman_release_year}</span>
             <div className=".list--item_buttons">
               <Link to={`${url}/${movie.id}/edit`}>
                 <button className="edit">Edit</button>
